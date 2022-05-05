@@ -6,7 +6,7 @@
 
   <sql id="search">
     <where>
-      <if test="keyword != null">
+      <if test="keyword != ''">
         <foreach item="item" index="index" collection="types" separator=" or " open="(" close=")">
           <if test='item == "t"'>
             title like concat('%', #{keyword}, '%')

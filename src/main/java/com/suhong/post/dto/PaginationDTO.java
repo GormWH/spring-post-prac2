@@ -9,8 +9,10 @@ public class PaginationDTO {
   private Integer start, end;
   private Integer total;
   private boolean prev, next;
+  private SearchParamDTO searchParam;
 
   public PaginationDTO(SearchParamDTO searchParam, Integer total) {
+    this.searchParam = searchParam;
     page = searchParam.getPage();
     size = searchParam.getSize();
     this.total = total;
