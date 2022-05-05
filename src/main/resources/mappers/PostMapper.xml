@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suhong.post.mapper.PostMapper">
+
+  <sql id="search">
+    <where>
+      <if test="keyword != null">
+        <foreach item="item" index="index" collection="types" separator=" or " open="(" close=")">
+          <if test='item == "t"'>
+            title like concat('%', #{keyword}, '%')
+          </if>
+          <if test='item == "c"'>
+            content like concat('%', #{keyword}, '%')
+          </if>
+          <if test='item == "w"'>
+            writer like concat('%', #{keyword}, '%')
+          </if>
+        </foreach>
+      </if>
+    </where>
+  </sql>
+
+  <select id="selectPosts" resultType="com.suhong.post.domain.PostVO">
+    select * from tbl_post
+    <include refid="search"/>
+    order by pno desc limit #{skip}, #{size}
+  </select>
+
+  <select id="selectPostsCount" resultType="int">
+    select count(*) from tbl_post
+    <include refid="search"/>
+    order by pno desc
+  </select>
+</mapper>
