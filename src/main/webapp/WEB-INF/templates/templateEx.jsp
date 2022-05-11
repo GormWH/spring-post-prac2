@@ -43,5 +43,6 @@
 
 <%@ include file="/WEB-INF/templates/5-logoutModal.jsp"%><%--<div> Logout Modal</div>--%>
 <%@ include file="/WEB-INF/templates/6-scripts.jsp"%><%--<script> Bootstrap scripts </script>--%>
+
 </body>
 </html>
