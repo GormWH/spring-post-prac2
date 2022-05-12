@@ -11,4 +11,5 @@ public interface PostMapper {
 
   Integer selectPostsCount(SearchParamDTO searchParamDTO);
 
+  void deletePost(Integer pno);
 }
